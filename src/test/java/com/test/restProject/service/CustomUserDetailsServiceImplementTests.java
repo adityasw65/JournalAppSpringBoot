@@ -38,7 +38,7 @@ public class CustomUserDetailsServiceImplementTests {
    }
 
 
-   @Disabled
+//   @Disabled
    @Test
    void loadUsernameByUsernameTest() {
       User mockUser = new User();
