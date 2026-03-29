@@ -32,6 +32,9 @@ public class JournalEntryControllerV2 {
    @GetMapping
    public ResponseEntity<List<JournalEntry>> getAllJournals() {
       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      if (authentication == null || !authentication.isAuthenticated()) {
+         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+      }
       String myUsername = authentication.getName();
       User user = userService.findByUsername(myUsername);
       List<JournalEntry> allData = user.getJournalEntryList();

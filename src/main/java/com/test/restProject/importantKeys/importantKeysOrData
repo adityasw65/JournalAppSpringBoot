@@ -1,4 +1,8 @@
 -------
+https://github.com/thevipulvats/journalApp
+this is github link of EngineeringDigest
+
+-------
 ::: To Run Kafka after downloading kafka tgz file and after extracting it :::
 1.  PS C:\kafka_2.13-4.2.0\kafka> bin\windows\kafka-storage.bat random-uuid
     after running this command - kafka uuid : r6e-VQ-VTzGnqmPsRYqxPw

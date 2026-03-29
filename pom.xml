@@ -59,15 +59,15 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.42</version>
-            <scope>provided</scope>
+            <!--            <version>1.18.42</version>-->
+            <!--            <scope>provided</scope>-->
         </dependency>
 
         <!--    spring security dependency added -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <scope>compile</scope>
+            <!--            <scope>compile</scope>-->
         </dependency>
 
         <!--        this dependency is for testing spring boot application automatically -->
@@ -79,24 +79,44 @@
         <!--            <scope>test</scope>-->
         <!--        </dependency>-->
 
-<!--        this is for sending email through code that's why we use this dependency -->
+        <!--        this is for sending email through code that's why we use this dependency -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
-<!--        this is dependency for redis implementation -->
+        <!--        this is dependency for redis implementation -->
         <!-- Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-<!--        to implement kafka dependency -->
+        <!--        to implement kafka dependency -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+
+        <!--        this is for JWT dependency -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.12.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.12.6</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.12.6</version>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
