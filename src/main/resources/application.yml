@@ -62,9 +62,9 @@ spring:
 #      this is for redis local machine
 #      host: 127.0.0.1
 #      port: 6379
-      url: "redis://default:MoTTLGi0xaREzJm1hQK7t8zGgJfyY6nw@redis-11163.crce286.ap-south-1-1.ec2.cloud.redislabs.com:11163"
+      url: ${DATA_REDIS_URL}
     mongodb:
-      uri: mongodb+srv://workstack365_db_user:AHLC1XcNwiybHVw3@cluster0.ltalqrs.mongodb.net/?appName=Cluster0
+      uri: ${MONGODB_URL}
       database: journalDB
       auto-index-creation: true
   main:
@@ -73,8 +73,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: workstack365@gmail.com
-    password: hnnk gcqe tany uzqx
+    username: ${EMAIL_ID}
+    password: ${EMAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -97,7 +97,7 @@ logging:
     # logging.level.root: ERROR
 
 # this is data for weather api related
-weather-api-key: 91f61744b9e712f2c894c35ee0622cfb
+weather-api-key: ${WEATHER_API_KEY}
 
 
 
