@@ -41,7 +41,7 @@
 spring:
 #  for kafka configuration
   kafka:
-    bootstrap-servers: ${BOOTSTRAP_SERVER:localhost:9092}
+    bootstrap-servers: ${BOOTSTRAP_SERVER}
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer

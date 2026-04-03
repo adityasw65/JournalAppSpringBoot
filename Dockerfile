@@ -1,32 +1,31 @@
-# Stage 1: Build
+# Stage 1: Build the application
 FROM eclipse-temurin:17-jdk-jammy AS build
 WORKDIR /app
 
-# Copy wrapper and pom
+# Copy the gradle/maven executable and wrapper
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
-RUN chmod +x mvnw
 
-# Dependencies
+# Download dependencies (this layer is cached if pom.xml doesn't change)
 RUN ./mvnw dependency:go-offline
 
-# Build
+# Copy source code and build the jar
 COPY src ./src
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Run
+# Stage 2: Run the application
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
-# Security: Non-root user
+# Create a non-root user for security
 RUN addgroup --system spring && adduser --system spring --ingroup spring
 USER spring:spring
 
-# Copy JAR
+# Copy only the built jar from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Render dynamic port mapping
-ENV SERVER_PORT=${PORT:-8080}
+# Render uses the PORT environment variable; Spring needs to listen to it
+ENV SERVER_PORT=${SERVER_PORT}
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
