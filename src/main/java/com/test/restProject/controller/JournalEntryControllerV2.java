@@ -4,6 +4,8 @@ import com.test.restProject.entity.JournalEntry;
 import com.test.restProject.entity.User;
 import com.test.restProject.services.JournalEntryService;
 import com.test.restProject.services.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/journal") // this is parent endpoint
 @Slf4j
+@Tag(name = "Journal APIs", description = "read, save, update and delete")
 public class JournalEntryControllerV2 {
 
    private final JournalEntryService journalEntryService;
@@ -30,6 +33,7 @@ public class JournalEntryControllerV2 {
    }
 
    @GetMapping
+   @Operation(summary = "Get all journal entries of a user")
    public ResponseEntity<List<JournalEntry>> getAllJournals() {
       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
       if (authentication == null || !authentication.isAuthenticated()) {
@@ -46,6 +50,7 @@ public class JournalEntryControllerV2 {
    }
 
    @PostMapping
+   @Operation(summary = "save journal entry of a user")
    public ResponseEntity<?> saveJournal(@RequestBody JournalEntry je) {
       try {
          Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -60,6 +65,7 @@ public class JournalEntryControllerV2 {
 
    //   you can use /id or direct id
    @GetMapping("/id/{myId}")
+   @Operation(summary = "Get single journal entry of a user by passing journal id")
    public ResponseEntity<JournalEntry> getJournalEntry(@PathVariable long myId) {
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
       String username = auth.getName();
@@ -79,6 +85,7 @@ public class JournalEntryControllerV2 {
 
    // we can do with GetMapping also but some standard and this will create conflict
    @DeleteMapping("/id/{myId}")
+   @Operation(summary = "Delete journal entry by passing journal id")
    public ResponseEntity<?> deleteJournalEntry(@PathVariable long myId) {
       try {
          Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -101,6 +108,7 @@ public class JournalEntryControllerV2 {
    // cause there we update both user and journal entries but here we are just updating journal entries
    // and it is reflecting to user data also ---> called cascading
    @PutMapping("/id/{myId}")
+   @Operation(summary = "Update journal entry")
    public ResponseEntity<?> updateJournalEntry(@PathVariable long myId,
                                                @RequestBody JournalEntry newEntry) {
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();

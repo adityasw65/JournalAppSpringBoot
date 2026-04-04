@@ -7,6 +7,7 @@ import com.test.restProject.entity.User;
 import com.test.restProject.repository.UserRepository;
 import com.test.restProject.services.UserService;
 import com.test.restProject.services.WeatherService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
 import org.bson.types.ObjectId;
@@ -22,6 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @Slf4j
+@Tag(name = "User APIs", description = "read, update and delete")
 public class UserControllerV2 {
    private final UserService userService;
    private final UserRepository userRepository;

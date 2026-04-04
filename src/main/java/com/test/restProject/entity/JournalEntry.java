@@ -4,6 +4,9 @@ package com.test.restProject.entity;
 // class with collection(table)
 
 import com.test.restProject.enums.Sentiments;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NonNull;
 import org.springframework.data.annotation.Id;
@@ -15,7 +18,12 @@ public class JournalEntry {
    @Id
    private long journalId;
    @NonNull
+   @NotEmpty
+   @NotBlank
    private String journalTitle;
+   @NotNull
+   @NotEmpty
+   @NotBlank
    private String journalContent;
    private Sentiments sentiments;
 

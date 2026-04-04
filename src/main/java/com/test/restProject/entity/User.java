@@ -1,5 +1,7 @@
 package com.test.restProject.entity;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -19,10 +21,14 @@ public class User {
    private ObjectId userId; // you can do anything, I have taken Object cause MongoDB test, ID
    @Indexed(unique = true) // it will not create automatic so you have to add property in properties file
    @NonNull
+   @NotEmpty
+   @NotBlank
    private String userName;
    private String email;
    private boolean sentimentsAnalysis;
    @NonNull
+   @NotEmpty
+   @NotBlank
    private String userPassword;
    @DBRef // this annotation make sure that just Ids of Journal Entry map with user
    // if you want entire document map with it just remove @DBRef

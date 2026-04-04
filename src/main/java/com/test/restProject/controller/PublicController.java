@@ -6,6 +6,7 @@ import com.test.restProject.repository.UserRepositoryImpl;
 import com.test.restProject.services.CustomUserDetailsServiceImplement;
 import com.test.restProject.services.UserService;
 import com.test.restProject.utility.JWTUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequestMapping("/public")
+@Tag(name = "Public APIs", description = "testing api, create user and login with user")
 public class PublicController {
    @Autowired
    private UserService userService;
