@@ -3,6 +3,7 @@ package com.test.restProject.controller;
 import com.test.restProject.appCache.AppCache;
 import com.test.restProject.entity.User;
 import com.test.restProject.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
+@Tag(name = "Admin APIs", description = "read all users, save admin role user and restart app-Cache")
 public class AdminController {
    private final UserService userService;
    private final AppCache appCache;

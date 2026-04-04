@@ -1,12 +1,14 @@
 package com.test.restProject.controller;
 
 import com.test.restProject.entity.JournalEntry;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
 @RequestMapping("/_journal") // this is parent endpoint
+@Tag(name = "Old Journal APIs", description = "read, save, update and delete")
 public class JournalEntryController {
 
    private Map<Long, JournalEntry> m1 = new HashMap<>();
